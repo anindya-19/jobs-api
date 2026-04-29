@@ -13,7 +13,7 @@ const auth = (req, res, next) => {
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET);
     //attach the user to the job routes
-    req.user = { userId: payload.userId, name: payload.name };
+    req.user = { userId: payload.userId, name: payload.name }; //set the req.user to these properties so that we can retrieve the value from the server in the future
     next();
   } catch (error) {
     throw new UnauthenticatedError("Authentication Invalid");
